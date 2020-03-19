@@ -23,7 +23,7 @@ module Elasticsearch
 
       # @option arguments [Hash] :body The operation definition and data (action-data pairs), separated by newlines (*Required*)
       #
-      # @see https://www.elastic.co/guide/en/elasticsearch/reference/7.5/docs-bulk.html
+      # @see https://www.elastic.co/guide/en/elasticsearch/reference/7.6/docs-bulk.html
       #
       def bulk(arguments = {})
         raise ArgumentError, "Required argument 'body' missing" unless arguments[:body]
@@ -46,7 +46,7 @@ module Elasticsearch
 
         body = arguments[:body]
         if body.is_a? Array
-          payload = Utils.__bulkify(body)
+          payload = Elasticsearch::API::Utils.__bulkify(body)
         else
           payload = body
       end

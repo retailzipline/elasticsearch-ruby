@@ -12,13 +12,11 @@ module Elasticsearch
         # @option arguments [Boolean] :include_type_name Whether a type should be returned in the body of the mappings.
         # @option arguments [Number] :order The order for this template when merging multiple matching ones (higher numbers are merged later, overriding the lower numbers)
         # @option arguments [Boolean] :create Whether the index template should only be added if new or can also replace an existing one
-        # @option arguments [Time] :timeout Explicit operation timeout
         # @option arguments [Time] :master_timeout Specify timeout for connection to master
-        # @option arguments [Boolean] :flat_settings Return settings in flat format (default: false)
 
         # @option arguments [Hash] :body The template definition (*Required*)
         #
-        # @see https://www.elastic.co/guide/en/elasticsearch/reference/7.5/indices-templates.html
+        # @see https://www.elastic.co/guide/en/elasticsearch/reference/7.6/indices-templates.html
         #
         def put_template(arguments = {})
           raise ArgumentError, "Required argument 'body' missing" unless arguments[:body]
@@ -43,9 +41,7 @@ module Elasticsearch
           :include_type_name,
           :order,
           :create,
-          :timeout,
-          :master_timeout,
-          :flat_settings
+          :master_timeout
         ].freeze)
 end
       end
