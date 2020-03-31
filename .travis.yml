@@ -29,15 +29,15 @@ matrix:
       jdk: oraclejdk8
       env: TEST_SUITE=unit
 
-    - rvm: 2.4.9
+    - rvm: 2.4.10
       jdk: oraclejdk8
       env: TEST_SUITE=unit
 
-    - rvm: 2.5.7
+    - rvm: 2.5.8
       jdk: oraclejdk8
       env: TEST_SUITE=unit
 
-    - rvm: 2.6.5
+    - rvm: 2.6.6
       jdk: oraclejdk8
       env: TEST_SUITE=unit
 
@@ -45,7 +45,7 @@ matrix:
       jdk: oraclejdk8
       env: TEST_SUITE=unit
 
-    - rvm: 2.6.5
+    - rvm: 2.6.6
       jdk: oraclejdk8
       env: QUIET=y TEST_SUITE=integration
 
