@@ -112,7 +112,9 @@ module Elasticsearch
           clear_tasks(client)
           clear_machine_learning_indices(client)
           create_x_pack_rest_user(client)
-          clear_data(client)
+          clear_xpack_indices(client)
+          clear_index_templates(client)
+          clear_snapshots_and_repositories(client)
           clear_transforms(client)
         end
 
@@ -196,6 +198,16 @@ module Elasticsearch
 
         def clear_indices(client)
           client.indices.delete(index: '*')
+        end
+
+        def clear_xpack_indices(client)
+          indices = client.indices.get(index: '_all').keys.reject do |i|
+            i.start_with?('.security') || i.start_with?('.watches')
+          end
+          indices.each do |index|
+            client.indices.delete_alias(index: index, name: '*', ignore: 404)
+            client.indices.delete(index: index, ignore: 404)
+          end
         end
       end
     end
